@@ -20,6 +20,12 @@ function showSuccess(input, message) {
     small.innerText = message;
 }
 
+// is email valid
+function isValidEmail(email) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
 // Event Listiners
 form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -28,23 +34,25 @@ form.addEventListener('submit', function (e) {
         showError(username, "Invalid Username");
     } else {
         showSuccess(username, "Username Available");
-    };
+    }
 
     if (email.value === '') {
         showError(email, "Invalid Email");
+    } else if (!isValidEmail(email.value)) {
+        showError(email, 'Email is not valid');
     } else {
         showSuccess(email, "Valid email");
-    };
+    }
 
     if (password.value === '') {
         showError(password, "Invalid password");
     } else {
         showSuccess(password, "Valid Password");
-    };
+    }
 
     if (password2.value === password.value) {
         showSuccess(password2, "Passwords match");
     } else {
         showError(password2, "Passwords do not match");
-    };
+    }
 });
