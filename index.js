@@ -50,9 +50,14 @@ form.addEventListener('submit', function (e) {
         showSuccess(password, "Valid Password");
     }
 
+
     if (password2.value === password.value) {
         showSuccess(password2, "Passwords match");
     } else {
         showError(password2, "Passwords do not match");
+    }
+
+    if (password2.value === '') {
+        showError(password2, "Re-type Password");
     }
 });
