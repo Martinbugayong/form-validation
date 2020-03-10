@@ -25,8 +25,26 @@ form.addEventListener('submit', function (e) {
     e.preventDefault();
 
     if (username.value === '') {
-        showError(username, "Username Invalid");
+        showError(username, "Invalid Username");
     } else {
-        showSuccess(username, "Username available");
-    }
-})
+        showSuccess(username, "Username Available");
+    };
+
+    if (email.value === '') {
+        showError(email, "Invalid Email");
+    } else {
+        showSuccess(email, "Valid email");
+    };
+
+    if (password.value === '') {
+        showError(password, "Invalid password");
+    } else {
+        showSuccess(password, "Valid Password");
+    };
+
+    if (password2.value === password.value) {
+        showSuccess(password2, "Passwords match");
+    } else {
+        showError(password2, "Passwords do not match");
+    };
+});
